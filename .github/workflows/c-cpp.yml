@@ -1,0 +1,38 @@
+name: C BUILD CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+       sudo apt update && sudo apt install -y \
+         autoconf
+         automake
+         make
+         gcc
+         git
+         libcairo1-dev
+         libfreetype-dev
+         libxcb1-dev
+         libxcb-ewmh-dev
+         libxcb-randr0-dev
+         libxcb-render-util0-dev
+         libxcb-util-dev
+         libharfbuzz-dev
+         libfontconfig1-dev
+         libalsaplayer-dev
+         pkg-config    
+    - name: setup
+      run: ./configure
+    - name: build source
+      run: make
