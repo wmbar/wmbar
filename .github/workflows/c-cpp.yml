@@ -1,4 +1,4 @@
-name: C BUILD CI
+name: GCC BUILD
 
 on:
   push:
@@ -15,24 +15,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: |
-       sudo apt update && sudo apt install -y \
-         autoconf
-         automake
-         make
-         gcc
-         git
-         libcairo1-dev
-         libfreetype-dev
-         libxcb1-dev
-         libxcb-ewmh-dev
-         libxcb-randr0-dev
-         libxcb-render-util0-dev
-         libxcb-util-dev
-         libharfbuzz-dev
-         libfontconfig1-dev
-         libalsaplayer-dev
-         pkg-config    
-    - name: setup
+       sudo apt update && sudo apt install -y libcairo2-dev libfontconfig-dev libfreetype-dev libfreetype6 libfreetype6-dev libxcb1-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-render-util0-dev libxcb-util-dev libharfbuzz-dev libfontconfig1-dev libasound2-dev pkg-config
+    - name: configure
       run: ./configure
     - name: build source
       run: make
