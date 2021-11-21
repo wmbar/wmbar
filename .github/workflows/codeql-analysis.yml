@@ -63,8 +63,8 @@ jobs:
     #    uses a compiled language
 
     - run: |
-       ./configure
-       make
+       sudo apt update && sudo apt install -y libcairo2-dev libfontconfig-dev libfreetype-dev libfreetype6 libfreetype6-dev libxcb1-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-render-util0-dev libxcb-util-dev libharfbuzz-dev libfontconfig1-dev libasound2-dev pkg-config \
+       ./configure && make
        
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
